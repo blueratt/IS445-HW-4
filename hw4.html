@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vega@5.16.1"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.16.2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+	<title>The Data Visualization of HW 4</title>
+</head>
+<body>
+	<p><strong>HW4 of IS 445</strong></p>
+	<p>
+	   This is a data visualization using the Vega-Lite to visualize the building inventory in Illinois
+	</p>
+	<div id='viz' class = "vl-viz">
+		
+	</div>
+ 	<script>
+ 		var vlspec = 
+    {
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {"url": "https://uiuc-ischool-dataviz.github.io/spring2019online/week02/building_inventory.csv"},
+  "hconcat": [ {
+    "transform": [{
+      "filter" :{"field": "Year Acquired", "gt": 1900}
+    }],
+    "mark":"bar",
+    "encoding": {
+      "x":{"field": "Year Acquired", "type": "quantitative"},
+      "y":{"aggregate": "count", "type":"quantitative"}
+    }
+  },
+  {
+    "transform": [{
+      "filter" :{"field": "Year Acquired", "gt": 1900}
+    }],
+    "mark":"bar",
+    "encoding": {
+      "x":{"field": "Total Floors", "type": "ordinal"},
+      "y":{"field": "Square Footage", "type":"quantitative"}
+    }
+  }]
+}
+ 		vegaEmbed('#viz', vlspec);
+ 	</script>
+</body>
+</html>

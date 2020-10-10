@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "url": "https://uiuc-ischool-dataviz.github.io/spring2019online/week02/building_inventory.csv"
+  },
+  "hconcat": [
+    {
+      "transform": [
+        {
+          "filter": {
+            "field": "Year Acquired",
+            "gt": 1900
+          }
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Year Acquired",
+          "type": "quantitative"
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": {
+            "field": "Year Acquired",
+            "gt": 1900
+          }
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Total Floors",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "Square Footage",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "config": {}
+}
